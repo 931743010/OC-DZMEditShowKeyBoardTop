@@ -1,0 +1,2 @@
+# OC-DZMEditShowKeyBoardTop
+介绍:将一个文本框或者一个空间弹动到键盘之上 本框架比IQKeyboardManager(简写IQ) 有一个优势 当多个滚动控件嵌套时 IQ会滚动它检测到的第一个滚动控件 但是DZMEditShowKeyBoardTop不会 你可以任意选择你需要支持弹动滚动控件 ScollView TbaleView CollectionView 能滚动即可 实现简单 可以任意修改或者自行添加runtime机制 注释明确 
