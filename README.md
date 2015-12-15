@@ -3,6 +3,9 @@
 
 ![CarouselView in action](DemoOne.gif)
 
+# Swift版本 Swift-DZMEditShowKeyBoardTop
+https://github.com/dengzemiao/Swift-DZMEditShowKeyBoardTop
+
 ##实现代码
 
 // 添加通知
@@ -13,19 +16,19 @@
 }
 
 // 显示的任选一种就行了
-#pragma mark -- 键盘开始显示
+// 键盘开始显示
 - (void)keyboardWillShowNotification:(NSNotification *)notification
 {
 [DZMEditShowKeyBoardTop keyboardShowNotification:notification scrollView:self.scrollview maxY:[DZMEditShowKeyBoardTop editShowKeyBoardTop].maxY];
 }
 
-#pragma mark -- 键盘结束显示
+// 键盘结束显示
 //- (void)keyboardDidShowNotification:(NSNotification *)notification
 //{
 //    [DZMEditShowKeyBoardTop keyboardShowNotification:notification scrollView:self.scrollview maxY:[DZMEditShowKeyBoardTop editShowKeyBoardTop].maxY];
 //}
 
-#pragma mark -- 键盘开始隐藏
+// 键盘开始隐藏
 - (void)keyboardWillHideNotification:(NSNotification *)notification
 {
 [DZMEditShowKeyBoardTop keyboardHideNotification:notification];
