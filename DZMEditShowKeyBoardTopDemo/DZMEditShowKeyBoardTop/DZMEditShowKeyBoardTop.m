@@ -12,6 +12,7 @@
 @property (nonatomic,strong) UIScrollView *scrollView;
 @property (nonatomic,assign) BOOL isThree;                             // 是否是第三方键盘
 @property (nonatomic,assign) int three;                                // 第三方键盘需要调用willShow3次
+@property (nonatomic,assign) CGRect currentKeyboardFrame;              // 当前显示键盘的位置
 @end
 @implementation DZMEditShowKeyBoardTop
 /**
@@ -145,9 +146,17 @@
     
     if (maxY > keyboardY) {
         
-        if (scrollView != object.scrollView) {
+        if (scrollView != object.scrollView || (scrollView == object.scrollView && (int)scrollView.contentSize.height != (int)object.currentSize.height)) {
             
-            object.scrollView.contentSize = object.currentSize;
+            if (scrollView == object.scrollView && (int)scrollView.contentSize.height != object.currentSize.height){
+                
+                object.scrollView.contentSize = object.currentSize;
+            }
+            
+            if ((int)object.currentKeyboardFrame.size.height != 0 && (int)object.currentKeyboardFrame.size.height != keyboardFrame.size.height) {
+                
+                object.scrollView.contentSize = object.currentSize;
+            }
             
             int height = scrollView.contentSize.height;
             
