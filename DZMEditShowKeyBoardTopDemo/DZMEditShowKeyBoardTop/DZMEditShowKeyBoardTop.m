@@ -10,6 +10,8 @@
 @interface DZMEditShowKeyBoardTop()
 @property (nonatomic,assign) CGSize currentSize;                      // 记录滚动控件原来的contensize
 @property (nonatomic,strong) UIScrollView *scrollView;
+@property (nonatomic,assign) BOOL isThree;                             // 是否是第三方键盘
+@property (nonatomic,assign) int three;                                // 第三方键盘需要调用willShow3次
 @end
 @implementation DZMEditShowKeyBoardTop
 /**
@@ -121,6 +123,23 @@
     CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     float keyboardAnimationDuration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    
+    // 检测第三方键盘
+    if ((int)keyboardFrame.size.height <= 0) {
+        object.three = 0;
+        object.isThree = YES;
+    }
+    
+    if (object.isThree) {
+        object.three += 1;
+        if (object.three != 3) {
+            return;
+        }else{
+            object.isThree = NO;
+        }
+        
+        keyboardAnimationDuration = 0.25;
+    }
     
     CGFloat keyboardY = keyboardFrame.origin.y;
     
